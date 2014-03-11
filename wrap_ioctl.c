@@ -1,3 +1,9 @@
+/* 
+taken from:
+http://stackoverflow.com/questions/15153209/compilation-fails-with-error-next-ioctl-undeclared-first-use-in-this-functi
+http://scaryreasoner.wordpress.com/2007/11/17/using-ld_preload-libraries-and-glibc-backtrace-function-for-debugging/
+*/
+
 #define _GNU_SOURCE
 #define _USE_GNU
 
