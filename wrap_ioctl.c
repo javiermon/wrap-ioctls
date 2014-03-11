@@ -13,6 +13,8 @@ http://scaryreasoner.wordpress.com/2007/11/17/using-ld_preload-libraries-and-gli
 #include <stdio.h>
 #include <dlfcn.h>
 
+static int (*next_ioctl)(int fd, int request, void *data) = NULL;
+
 static void show_stackframe() {
   void *trace[16];
   char **messages = (char **)NULL;
@@ -28,7 +30,6 @@ static void show_stackframe() {
 int ioctl(int fd, int request, void *data)
 {
         char *msg;
-        static int (*next_ioctl)(int fd, int request, void *data) = NULL;
 
         if (next_ioctl == NULL) {
                 fprintf(stderr, "ioctl : wrapping ioctl\n");
